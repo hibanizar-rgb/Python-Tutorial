@@ -1,0 +1,23 @@
+
+class Complex:
+    def __init__(self, real, imag):
+        self.real = real
+        self.imag = imag
+
+    # Overloading the + operator using __add__()
+    def __add__(self, other):
+        return Complex(self.real + other.real, self.imag + other.imag)
+
+    # Displaying the result in a readable format
+    def __str__(self):
+        return f"{self.real} + {self.imag}i"
+
+# Example usage
+c1 = Complex(3, 4)
+c2 = Complex(5, 6)
+
+result = c1 + c2  # Uses overloaded + operator
+
+print("First Complex Number:", c1)
+print("Second Complex Number:", c2)
+print("Sum of Complex Numbers:", result)

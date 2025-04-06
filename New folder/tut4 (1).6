@@ -1,0 +1,27 @@
+
+
+
+class Mobile:
+    def _init_(self):
+        self.company = ""
+        self.model = ""
+        self.price = 0.0
+
+    def set_details(self):
+        self.company = input("Enter mobile company: ")
+        self.model = input("Enter mobile model: ")
+        self.price = float(input("Enter mobile price: "))
+
+    def display_details(self):
+        print("\nMobile Details:")
+        print(f"Company: {self.company}")
+        print(f"Model: {self.model}")
+        print(f"Price: ₹{self.price:.2f}")
+
+
+# Create an object of the Mobile class
+mobile1 = Mobile()
+
+# Invoke the methods
+mobile1.set_details()
+mobile1.display_details()

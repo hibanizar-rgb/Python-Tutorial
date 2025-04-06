@@ -1,0 +1,28 @@
+
+
+
+class RECTANGLE:
+    def _init_(self, height, width, corner_x, corner_y):
+        self.height = height
+        self.width = width
+        self.corner_x = corner_x
+        self.corner_y = corner_y
+
+    def center(self):
+        center_x = self.corner_x + self.width / 2
+        center_y = self.corner_y + self.height / 2
+        return (center_x, center_y)
+
+    def area(self):
+        return self.height * self.width
+
+    def perimeter(self):
+        return 2 * (self.height + self.width)
+
+# Creating an instance of RECTANGLE
+rect1 = RECTANGLE(10, 5, 0, 0)
+
+# Using the member functions and printing their return values
+print("Center:", rect1.center())
+print("Area:", rect1.area())
+print("Perimeter:", rect1.perimeter())
