@@ -1,0 +1,18 @@
+
+
+import csv
+
+# Data to write
+data = [
+    ['Name', 'Age', 'City'],
+    ['Alice', 25, 'New York'],
+    ['Bob', 30, 'Los Angeles'],
+    ['Charlie', 35, 'Chicago']
+]
+
+# Write to CSV file
+with open('output.csv', mode='w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerows(data)
+
+print("Data has been written to output.csv")

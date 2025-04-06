@@ -1,0 +1,23 @@
+
+
+
+import numpy as np
+
+# Create two random 3x3 matrices with integers between 0 and 20
+A = np.random.randint(0, 21, size=(3, 3))
+B = np.random.randint(0, 21, size=(3, 3))
+
+print("Matrix A:\n", A)
+print("\nMatrix B:\n", B)
+
+# Matrix Addition
+add_result = A + B
+print("\nMatrix Addition (A + B):\n", add_result)
+
+# Matrix Multiplication
+mult_result = np.dot(A, B)
+print("\nMatrix Multiplication (A x B):\n", mult_result)
+
+# Transpose of the product matrix
+transpose_result = mult_result.T
+print("\nTranspose of the Product Matrix:\n", transpose_result)

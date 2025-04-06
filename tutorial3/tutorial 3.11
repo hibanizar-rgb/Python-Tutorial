@@ -1,0 +1,26 @@
+
+
+def find_quadrant(x, y):
+    if x > 0 and y > 0:
+        return "Quadrant I"
+    elif x < 0 and y > 0:
+        return "Quadrant II"
+    elif x < 0 and y < 0:
+        return "Quadrant III"
+    elif x > 0 and y < 0:
+        return "Quadrant IV"
+    elif x == 0 and y == 0:
+        return "Origin"
+    elif x == 0:
+        return "Lies on Y-axis"
+    elif y == 0:
+        return "Lies on X-axis"
+
+# Input from user
+try:
+    x = float(input("Enter x-coordinate: "))
+    y = float(input("Enter y-coordinate: "))
+    result = find_quadrant(x, y)
+    print(f"The point ({x}, {y}) is in {result}.")
+except ValueError:
+    print("Invalid input! Please enter numeric values.")

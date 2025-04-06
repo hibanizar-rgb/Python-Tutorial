@@ -1,0 +1,14 @@
+import pandas as pd
+
+# Sample data (you can replace this with your own)
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'Age': [25, 30, 35],
+    'City': ['New York', 'Los Angeles', 'Chicago']
+}
+
+# Create a DataFrame
+df = pd.DataFrame(data)
+
+# Write to Excel file
+df.to_excel('output.xlsx', index=False)  # index=False to skip row numbers

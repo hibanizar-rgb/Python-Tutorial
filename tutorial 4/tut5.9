@@ -1,0 +1,61 @@
+
+
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from statistics import mode
+
+# a) Read and display the file contents
+df = pd.read_csv('stud.csv')
+print("Original Data:\n", df)
+
+# b) Set rollno as index
+df.set_index('rollno', inplace=True)
+print("\nData with Rollno as index:\n", df)
+
+# c) Display name and mark
+print("\nName and Mark:\n", df[['name', 'mark']])
+
+# d) rollno, name, and mark in the order of name
+sorted_by_name = df.sort_values(by='name')[['name', 'mark']]
+print("\nSorted by Name:\n", sorted_by_name)
+
+# e) rollno, name, and mark in descending order of mark
+sorted_by_mark = df.sort_values(by='mark', ascending=False)[['name', 'mark']]
+print("\nSorted by Mark (Descending):\n", sorted_by_mark)
+
+# f) Average mark, median and mode
+avg_mark = df['mark'].mean()
+median_mark = df['mark'].median()
+mode_mark = mode(df['mark'])  # Use statistics.mode for mode
+
+print(f"\nAverage Mark: {avg_mark}")
+print(f"Median Mark: {median_mark}")
+print(f"Mode Mark: {mode_mark}")
+
+# g) Minimum and Maximum marks
+min_mark = df['mark'].min()
+max_mark = df['mark'].max()
+
+print(f"\nMinimum Mark: {min_mark}")
+print(f"Maximum Mark: {max_mark}")
+
+# h) Variance and Standard Deviation of marks
+var_mark = df['mark'].var()
+std_mark = df['mark'].std()
+
+print(f"\nVariance of Marks: {var_mark}")
+print(f"Standard Deviation of Marks: {std_mark}")
+
+# i) Display histogram of marks
+plt.hist(df['mark'], bins=5, color='skyblue', edgecolor='black')
+plt.title('Histogram of Student Marks')
+plt.xlabel('Marks')
+plt.ylabel('Number of Students')
+plt.grid(True)
+plt.show()
+
+# j) Remove the place column
+df.drop(columns=['place'], inplace=True)
+print("\nData after removing 'place' column:\n", df)

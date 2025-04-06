@@ -1,0 +1,29 @@
+
+
+
+
+import pandas as pd
+
+# Read the student.csv file
+df = pd.read_csv('student.csv')
+
+# 1. Find the average CGPA of the students
+average_cgpa = df['CGPA'].mean()
+print(f"Average CGPA of all students: {average_cgpa:.2f}")
+
+# 2. Display the details of all students having CGPA > 9
+high_cgpa_students = df[df['CGPA'] > 9]
+print("\nStudents with CGPA > 9:\n", high_cgpa_students)
+
+# 3. Display the details of all CSE students with CGPA > 9
+cse_high_cgpa = df[(df['Branch'].str.upper() == 'CSE') & (df['CGPA'] > 9)]
+print("\nCSE Students with CGPA > 9:\n", cse_high_cgpa)
+
+# 4. Display the details of student(s) with maximum CGPA
+max_cgpa = df['CGPA'].max()
+topper = df[df['CGPA'] == max_cgpa]
+print("\nStudent(s) with Maximum CGPA:\n", topper)
+
+# 5. Display average CGPA of each branch
+avg_cgpa_by_branch = df.groupby('Branch')['CGPA'].mean()
+print("\nAverage CGPA by Branch:\n", avg_cgpa_by_branch

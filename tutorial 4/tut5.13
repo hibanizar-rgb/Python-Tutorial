@@ -1,0 +1,25 @@
+
+
+
+
+import pandas as pd
+
+# Read the CSV file
+df = pd.read_csv('employee.csv')
+
+# 1. Print first 7 records
+print("First 7 records:\n", df.head(7))
+
+# 2. Print all employee names in alphabetical order
+print("\nEmployee names in alphabetical order:\n", df['name'].sort_values().to_list())
+
+# 3. Find the name of the employee with the highest salary
+highest_salary_employee = df[df['salary'] == df['salary'].max()]
+print("\nEmployee with highest salary:\n", highest_salary_employee['name'].values[0])
+
+# 4. List the names of male employees
+male_employees = df[df['gender'].str.lower() == 'male']
+print("\nMale employees:\n", male_employees['name'].to_list())
+
+# 5. Display all unique teams employees belong to
+print("\nTeams employees belong to:\n", df['team'].unique())

@@ -1,0 +1,84 @@
+
+
+import tkinter as tk
+from tkinter import messagebox
+
+class GuessNumberGame:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Guess the Number - Computer Guesses")
+
+        self.low = 1
+        self.high = 100
+        self.guess = None
+
+        # Title label
+        self.label = tk.Label(root, text="Think of a number between 1 and 100", font=("Arial", 14))
+        self.label.pack(pady=10)
+
+        # Guess display
+        self.guess_label = tk.Label(root, text="", font=("Arial", 24, "bold"))
+        self.guess_label.pack(pady=20)
+
+        # Buttons for feedback
+        self.button_frame = tk.Frame(root)
+        self.button_frame.pack(pady=10)
+
+        self.too_small_btn = tk.Button(self.button_frame, text="Too Small", width=15, command=self.too_small)
+        self.too_small_btn.grid(row=0, column=0, padx=5)
+
+        self.too_large_btn = tk.Button(self.button_frame, text="Too Large", width=15, command=self.too_large)
+        self.too_large_btn.grid(row=0, column=1, padx=5)
+
+        self.correct_btn = tk.Button(self.button_frame, text="Correct!", width=15, command=self.correct)
+        self.correct_btn.grid(row=0, column=2, padx=5)
+
+        # New game button
+        self.new_game_btn = tk.Button(root, text="New Game", command=self.start_new_game, state="disabled")
+        self.new_game_btn.pack(pady=10)
+
+        # Start game
+        self.make_guess()
+
+    def make_guess(self):
+        if self.low > self.high:
+            self.guess_label.config(text="Something's wrong!")
+            self.disable_buttons()
+            return
+        self.guess = (self.low + self.high) // 2
+        self.guess_label.config(text=f"My guess is: {self.guess}")
+
+    def too_small(self):
+        self.low = self.guess + 1
+        self.make_guess()
+
+    def too_large(self):
+        self.high = self.guess - 1
+        self.make_guess()
+
+    def correct(self):
+        self.guess_label.config(text=f"I guessed it! It's {self.guess}")
+        self.disable_buttons()
+
+    def disable_buttons(self):
+        self.too_small_btn.config(state="disabled")
+        self.too_large_btn.config(state="disabled")
+        self.correct_btn.config(state="disabled")
+        self.new_game_btn.config(state="normal")
+
+    def start_new_game(self):
+        self.low = 1
+        self.high = 100
+        self.guess = None
+        self.too_small_btn.config(state="normal")
+        self.too_large_btn.config(state="normal")
+        self.correct_btn.config(state="normal")
+        self.new_game_btn.config(state="disabled")
+        self.guess_label.config(text="")
+        self.make_guess()
+
+# Create and run the app
+if __name__ == "__main__":
+    root = tk.Tk()
+    game = GuessNumberGame(root)
+    root.mainloop()

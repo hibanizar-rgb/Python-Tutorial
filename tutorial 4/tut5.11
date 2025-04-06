@@ -1,0 +1,44 @@
+
+
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read CSV data
+df = pd.read_csv('sales.csv')
+
+# 1) Toothpaste sales - Scatter Plot
+plt.figure(figsize=(8,5))
+plt.scatter(df['month_number'], df['toothpaste'], color='blue', label='Toothpaste Sales', marker='o')
+plt.title('Toothpaste Sales Data')
+plt.xlabel('Month Number')
+plt.ylabel('Toothpaste Units Sold')
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+# 2) Face Cream and Face Wash - Bar Chart
+plt.figure(figsize=(8,5))
+plt.bar(df['month_number'] - 0.2, df['facecream'], width=0.4, label='Face Cream', align='center')
+plt.bar(df['month_number'] + 0.2, df['facewash'], width=0.4, label='Face Wash', align='center')
+plt.title('Face Cream and Face Wash Sales Data')
+plt.xlabel('Month Number')
+plt.ylabel('Units Sold')
+plt.xticks(df['month_number'])
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+# 3) Total Sale for the Year - Pie Chart
+# Sum up all products
+product_totals = df[['facecream', 'facewash', 'toothpaste', 'bathingsoap', 'shampoo', 'moisturizer']].sum()
+
+# Pie chart
+plt.figure(figsize=(7,7))
+plt.pie(product_totals, labels=product_totals.index, autopct='%1.1f%%', startangle=140)
+plt.title('Total Sales Data for the Year (Product-wise)')
+plt.axis('equal')  # Equal aspect ratio ensures pie is drawn as a circle.
+plt.tight_layout()
+plt.show()
